@@ -25,7 +25,7 @@ for label in glob.glob(dir + '/train/*'):
     for img in glob.glob(label + '/*'):
         train_file.append(img.split('/')[-1])
         train_label.append(label.split('/')[-1])
-        train_array.append(cv2.imread(img,0))
+        train_array.append(list(cv2.imread(img,0).flatten()))
         
 
 # Create testing file
@@ -33,7 +33,7 @@ for label in glob.glob(dir + '/test/*'):
     for img in glob.glob(label + '/*'):
         test_file.append(img.split('/')[-1])
         test_label.append(label.split('/')[-1])
-        test_array.append(cv2.imread(img,0))
+        test_array.append(list(cv2.imread(img,0).flatten()))
    
 # Create DataFrame
 train = pd.DataFrame(list(zip(train_file, train_array, train_label)), 
